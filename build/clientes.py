@@ -1,7 +1,8 @@
 from pathlib import Path
 import json
-from tkinter import Tk, Canvas, Button, messagebox
+from tkinter import *
 from tkinter import ttk
+from tkinter import messagebox
 from agregarClientes import agregarClientes
 
 def clientes():
@@ -97,6 +98,10 @@ def clientes():
     button_1 = Button(
         clientes_window,
         text="Actualizar lista",
+        font=("Arial", 14),
+        bg="#4CAF50",  # Color de fondo
+        fg="white",  # Color del texto
+        relief="flat",
         command=actualizar_lista
     )
     button_1.place(x=269.0, y=479.0, width=121.0, height=42.0)
@@ -105,7 +110,11 @@ def clientes():
     button_2 = Button(
         clientes_window,
         text="Agregar cliente",
-        command=lambda: [clientes_window.destroy(), agregarClientes()],
+        font=("Arial", 14),
+        bg="#008CBA",  # Color de fondo
+        fg="white",  # Color del texto
+        relief="flat",
+        command=lambda: [clientes_window.destroy(), agregarClientes()]
     )
     button_2.place(x=22.0, y=479.0, width=156.39669799804688, height=42.0)
 

@@ -1,6 +1,6 @@
 from pathlib import Path
 import json
-from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
+from tkinter import Tk, Canvas, Entry, Button
 
 def agregarClientes():
     
@@ -14,25 +14,14 @@ def agregarClientes():
         clientes_data.append(item)
         print(clientes_data)
         
-        
         with open("clientes.json", "w") as archivo:
             json.dump(clientes_data, archivo, indent=4)
         
-        
         agregarCliente.destroy()
 
-        
-        
-    
     def abrirClientes():
         from  clientes import clientes
-        clientes()# Llama a la función 'clientes' para abrir la ventana
-
-    OUTPUT_PATH = Path(__file__).parent
-    ASSETS_PATH = OUTPUT_PATH / Path(r"C:\Users\Ignacio\Documents\proyectoFInal\build\assets\frame2")
-
-    def relative_to_assets(path: str) -> Path:
-        return ASSETS_PATH / Path(path)
+        clientes()  # Llama a la función 'clientes' para abrir la ventana
 
     # Ventana de agregar cliente
     agregarCliente = Tk()
@@ -59,36 +48,53 @@ def agregarClientes():
         font=("Inter", 32 * -1)
     )
 
-    button_image_1 = PhotoImage(file=relative_to_assets("button_1.png"))
+    # Botón para abrir la ventana de clientes
     button_1 = Button(
-        image=button_image_1,
-        borderwidth=0,
-        highlightthickness=0,
-        command=lambda: print("button_1 clicked"),
-        relief="flat"
+        agregarCliente,
+        text="Abrir Clientes",
+        font=("Arial", 14),
+        bg="#4CAF50",  # Color de fondo
+        fg="white",  # Color del texto
+        relief="flat",
+        command=lambda: print("button_1 clicked")  # Cambiar el comando según sea necesario
     )
     button_1.place(x=171.0, y=412.0, width=155.0, height=42.0)
 
-    button_image_2 = PhotoImage(file=relative_to_assets("button_2.png"))
+    # Botón para guardar el cliente y abrir la ventana de clientes
     button_2 = Button(
-        image=button_image_2,
-        borderwidth=0,
-        highlightthickness=0,
-        command=lambda: [guardarCliente(), abrirClientes()],
-        relief="flat"
+        agregarCliente,
+        text="Guardar y Ver Clientes",
+        font=("Arial", 14),
+        bg="#008CBA",  # Color de fondo
+        fg="white",  # Color del texto
+        relief="flat",
+        command=lambda: [guardarCliente(), abrirClientes()]
     )
     button_2.place(x=74.0, y=344.0, width=143.0, height=42.0)
 
-    entry_image_1 = PhotoImage(file=relative_to_assets("entry_1.png"))
-    entry_bg_1 = canvas.create_image(200.0, 199.0, image=entry_image_1)
-    entry_1 = Entry(bd=0, bg="#FFFFFF", fg="#000716", highlightthickness=0)
+    # Campo de entrada para el nombre
+    entry_1 = Entry(
+        agregarCliente,
+        bd=0,
+        bg="#FFFFFF",
+        fg="#000716",
+        highlightthickness=0,
+        font=("Arial", 14)
+    )
     entry_1.place(x=74.0, y=187.0, width=252.0, height=22.0)
 
-    entry_image_2 = PhotoImage(file=relative_to_assets("entry_2.png"))
-    entry_bg_2 = canvas.create_image(200.0, 263.0, image=entry_image_2)
-    entry_2 = Entry(bd=0, bg="#FFFFFF", fg="#000716", highlightthickness=0)
+    # Campo de entrada para la cédula
+    entry_2 = Entry(
+        agregarCliente,
+        bd=0,
+        bg="#FFFFFF",
+        fg="#000716",
+        highlightthickness=0,
+        font=("Arial", 14)
+    )
     entry_2.place(x=74.0, y=251.0, width=252.0, height=22.0)
 
+    # Etiquetas de texto para los campos de entrada
     canvas.create_text(76.0, 161.0, anchor="nw", text="Nombre", fill="#000000", font=("Inter", 20 * -1))
     canvas.create_text(76.0, 225.0, anchor="nw", text="Cédula", fill="#000000", font=("Inter", 20 * -1))
 
