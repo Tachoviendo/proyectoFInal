@@ -21,7 +21,8 @@ def clientes():
         clientes = cargar_clientes()
         
         # Eliminar el cliente seleccionado
-        clientes = [c for c in clientes if cliente not in c.values()]
+        
+        
         
         # Guardar los cambios en el archivo
         with open("clientes.json", "w") as archivo:
@@ -87,12 +88,12 @@ def clientes():
     )
 
     # Crear el Treeview para mostrar la lista de clientes
-    treeview = ttk.Treeview(clientes_window, columns=("Nombre", "Acción"), show="headings", height=15)
+    treeview = ttk.Treeview(clientes_window, columns=("Nombre", ""), show="headings", height=15)
     treeview.place(x=22, y=100, width=550, height=300)
 
     # Definir las columnas
     treeview.heading("Nombre", text="Nombre")
-    treeview.heading("Acción", text="Acción")
+    treeview.heading("", text="")
 
     # Crear un botón para actualizar la lista
     button_1 = Button(

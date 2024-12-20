@@ -2,6 +2,7 @@ from pathlib import Path
 import json
 from tkinter import Tk, Canvas, Entry, Button
 
+
 def agregarClientes():
     
     def guardarCliente():
@@ -10,7 +11,8 @@ def agregarClientes():
             clientes_data = json.load(archivo)
         
         item = {}    
-        item[entry_1.get()] = entry_2.get()  
+        item["nombre"] = entry_1.get()
+        item["ci"] = entry_2.get()
         clientes_data.append(item)
         print(clientes_data)
         
